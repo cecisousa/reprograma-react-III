@@ -1,0 +1,23 @@
+p {
+    margin: 10% auto;
+}
+
+.container{
+    width: 100px;
+    margin: 10% auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.purple {
+    background-color: purple;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.yellow {
+    background-color: yellow;
+    padding: 20px;
+    margin: 20px auto;
+}
