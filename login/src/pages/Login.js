@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import Input from '../components/Input/Input'
 import Button from '../components/Button/Button';
+import './styles.css'
 
-class Home extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -66,4 +67,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default Login;
