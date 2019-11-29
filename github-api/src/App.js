@@ -1,12 +1,11 @@
 import React from 'react';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import Produtos from './pages/Produtos';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './App.css';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Produtos from './pages/Produtos';
 import Usuarios from './pages/Usuarios';
 import Repos from './pages/Repos';
-
+import './App.css';
 
 function App() {
   return (

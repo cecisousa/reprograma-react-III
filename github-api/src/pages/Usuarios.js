@@ -1,8 +1,6 @@
 import React, { Fragment, Component } from 'react';
-import Card from '../components/Card/Card';
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';
-import listaProdutos from '../mock/produtos';
 import CardUser from '../components/CardUser/CardUser';
 import { getUser, getRepos } from '../api/users';
 
@@ -12,6 +10,7 @@ class Usuarios extends Component {
         this.state = {
             value: "",
             user: {},
+            repos: []
         }
     }
 
@@ -22,19 +21,25 @@ class Usuarios extends Component {
     }
 
     pesquisar = () => {
-        getUser(this.state.value).then((abobrinha) => {
+        getUser(this.state.value).then((response) => {
             this.setState({
-                user: abobrinha.data
+                user: response.data
             })
-            console.log(this.state.user, 'pesquisar')
-        }
-        ).catch(err => console.log(err))
+        }).catch(err => console.log(err))
     }
 
     pesquisarRepos = (login) => {
-        getRepos(login).then(res => {
-            this.props.history.push('/repos');
-        })
+        getRepos(login).then(response => {
+            this.setState({
+                repos: response.data
+            })
+            this.props.history.push({
+                pathname: "/repos",
+                state: {
+                    repos: this.state.repos
+                }
+            })
+        }).catch(err => console.log(err))
     }
 
     render() {
@@ -42,7 +47,7 @@ class Usuarios extends Component {
         return (
             <Fragment>
                 <Input
-                    placeholder="Pesquise seu produto"
+                    placeholder="Pesquise por um usuário"
                     tipo="text"
                     pegarValorInput={this.valorInput}
                 ></Input>
@@ -50,16 +55,15 @@ class Usuarios extends Component {
                     click={this.pesquisar}
                 >Pesquisar</Button>
                 <div className="lista_item">
-                    {this.state.user &&
+                    {this.state.user ?
                         <CardUser
                             img={avatar_url}
                             user={login}
                             name={name}
                             clicar={() => this.pesquisarRepos(login)}
                         />
+                        : <p>Pesquise um usuário</p>
                     }
-
-
                 </div>
             </Fragment>
         )

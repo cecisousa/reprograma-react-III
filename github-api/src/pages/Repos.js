@@ -1,13 +1,15 @@
 import React from 'react';
 
 const Repos = props => {
-    console.log(props)
+    const repos = props.location.state.repos;
     return (
         <ul>
-            {/* {this.state.repos.map(r => (
-            <li> {r.name} </li>
-        ))} */}
-        <li> Oi </li>
+            {repos.map(item => {
+                return <div key={item.id}>
+                    <li>{item.name}</li>
+                    <p>Descrição: {item.description}</p>
+                </div>
+            })}
         </ul>
     )
 }
