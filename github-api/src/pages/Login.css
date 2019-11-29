@@ -1,0 +1,14 @@
+.login-form {
+    width: 70%;
+    margin: 50px auto;
+    padding: 20px;
+    border: solid gray 1px;
+    text-align: center;
+}
+
+.group-label {
+    display: flex;
+    margin: 10px;
+    width: 70%;
+    justify-content: space-between;
+}
